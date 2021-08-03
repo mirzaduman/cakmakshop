@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="md:flex lg:flex xl:flex 2xl:flex">
+    <div class="md:h-screen md:sticky md:top-0">
+        {% include 'partials/_sidebar.html' %}
+    </div>
+    <div class="w-full">
+        <h1 class="text-3xl text-center font-serif pt-6 px-6" style="color:#e71028;">Türkiye’nin Dört Bir Yanına Gönderiyoruz!</h1>
+
+        {% include 'partials/_arama.html' %}
+{% if cakmak %}
+        <div class="grid place-items-center xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2">
+        {% for cakmak in cakmak %}
+            <a href="{% url 'cakmak' cakmak.no %}" class="cursor-default">
+                <div class="transform hover:scale-110 bg-white shadow m-3 rounded md:w-64 w-52 flex flex-col justify-center border">
+                    <div>
+                        <div style="background-image: url('{{ cakmak.ana_foto.url }}');"
+                            class="bg-cover bg-center bg-gray-300 h-52 rounded">
+                        </div>
+                    </div>
+                    <div class="mt-4 flex flex-col justify-center text-center">
+                        <p class="text-xl text-bold mb-2 font-hairline">{{ cakmak.marka }} {{ cakmak.model }}</p>
+                        <div>
+                            <button class="bg-yellow-500 w-24 rounded cursor-default"><p class="text-sm tracking-wide">{{ cakmak.materyal }}</p></button>
+                            <button class="bg-blue-300 w-24 rounded cursor-default"><p class="text-sm tracking-wide">{{ cakmak.fonksiyon }}</p></button>
+                        </div>
+                        <p class="mt-3 mb-2 text-lg">{{ cakmak.fiyat }} ₺</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+        </div>
+{% else %}
+        <div class="flex justify-center mt-10">
+            <p class="text-3xl text-green-600">Ürün bulunamadı!</p>
+        </div>
+{% endif %}
+    <br>
+{% if cakmak %}
+        {% if cakmak.has_next %}
+        <span class="flex justify-center">
+            Sayfa {{ cakmak.number }}
+        </span>
+        {% endif %}
+        <br>
+        <div class="flex justify-center">
+            <span class="step-links">
+                {% if cakmak.has_previous %}
+                    <a href="?page=1{% if request.GET.arama %}&arama={{ request.GET.arama }}{% endif %}" class="material-icons">first_page</a>
+                    <a href="?page={{ cakmak.previous_page_number }}{% if request.GET.arama %}&arama={{ request.GET.arama }}{% endif %}" class="material-icons">chevron_left</a>
+                {% endif %}
+
+
+
+                {% if cakmak.has_next %}
+                    <a href="?page={{ cakmak.next_page_number }}{% if request.GET.arama %}&arama={{ request.GET.arama }}{% endif %}" class="material-icons">chevron_right</a>
+                    <a href="?page={{ cakmak.paginator.num_pages }}{% if request.GET.arama %}&arama={{ request.GET.arama }}{% endif %}" class="material-icons">last_page</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

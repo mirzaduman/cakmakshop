@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Çakmak modelleri uygun fiyat ve indirim fırsatlarıyla burada. Tıkla, en ucuz çakmak modelini seç. Her türlü çakmak çeşidiyle tüm Türkiye'ye sınırsız hizmet vermekteyiz." />
+    <meta name="robots" content="çakmak, toptan çakmak, bursa çakmak, çakmak bursa, çakmak toptan, çakmak shop, çakmakshop, cakmak shop, cakmakshop, tokai, clipper, mgm" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+    <title>Çakmak Shop</title>
+</head>
+<body class="bg-gray-100">
+    {% block content %} {% endblock %}
+    <script>
+        window.onload = function(){
+        whatsapp_se_btn_phone = '+905522168000';
+        $(document.body).append('<div class="whatsapp-se-btn"></div>'),whatsapp_se_btn_base64="https://image.flaticon.com/icons/svg/124/124034.svg",$(".whatsapp-se-btn").attr("style","position:fixed;bottom:15px;right:15px;overflow:hidden;background:#1bd741;color:#ffffff;text-align:center;padding:4px 4px;z-index:9999999;cursor:pointer;box-shadow:#000000 0 0 5px;border-radius:100px;"),$(".whatsapp-se-btn").html('<img style="width: 55px;" src="'+whatsapp_se_btn_base64+'" alt="Whatsapp ile İletişime Geç" />'),$(".whatsapp-se-btn").attr("onclick",'location.href="https://wa.me/'+whatsapp_se_btn_phone+'"');}
+    </script>
+
+</body>
+</html>

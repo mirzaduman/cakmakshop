@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="md:flex lg:flex xl:flex 2xl:flex">
+    <div class="md:h-screen md:sticky md:top-0">
+        {% include 'partials/_sidebar.html' %}
+    </div>
+    <div class="mx-auto">
+        <p class="text-3xl mt-8 text-center">{{ cakmak.marka }} {{ cakmak.model }}</p>
+        <div id="image-slider" class="splide mt-8 mx-auto">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide"><img src="{{ cakmak.ana_foto.url }}" alt="çakmak"></li>
+                    {% if cakmak.foto_2 %}
+                    <li class="splide__slide"><img src="{{ cakmak.foto_2.url }}" alt="çakmak"></li>
+                    {% endif %}
+                    {% if cakmak.foto_3 %}
+                    <li class="splide__slide"><img src="{{ cakmak.foto_3.url }}" alt="çakmak"></li>
+                    {% endif %}
+                    {% if cakmak.foto_4 %}
+                    <li class="splide__slide"><img src="{{ cakmak.foto_4.url }}" alt="çakmak"></li>
+                    {% endif %}
+                    {% if cakmak.foto_5 %}
+                    <li class="splide__slide"><img src="{{ cakmak.foto_5.url }}" alt="çakmak"></li>
+                    {% endif %}
+                    {% if cakmak.foto_6 %}
+                    <li class="splide__slide"><img src="{{ cakmak.foto_6.url }}" alt="çakmak"></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="flex justify-around pt-8 sm:w-96  mx-auto">
+            <button class="bg-yellow-500 sm:w-32 rounded cursor-default mr-8"><p class="text-xl tracking-wide p-2">{{ cakmak.materyal }}</p></button>
+            <button class="bg-blue-300 sm:w-32 rounded cursor-default"><p class="text-xl tracking-wide p-2">{{ cakmak.fonksiyon }}</p></button>
+            <button class="bg-purple-300 sm:w-32 rounded cursor-default ml-8"><p class="text-xl tracking-wide p-2">{{ cakmak.adet }} Adet</p></button>
+        </div>
+        <p class="text-2xl mt-6 text-center">{{ cakmak.fiyat }} ₺</p>
+        <div class="border shadow mx-auto w-7/12 mt-8 mb-16 p-2">
+            <p class="text-lg text-center">{{ cakmak.aciklama }}</p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener( 'DOMContentLoaded', function () {
+            new Splide( '#image-slider' ).mount();
+        } );
+    </script>
+{% endblock %}
